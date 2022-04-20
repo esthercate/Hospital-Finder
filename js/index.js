@@ -21,10 +21,6 @@ function setUpMap(center) {
     zoom: 15
   })
 
-  const marker1 = new mapboxgl.Marker()
-    .setLngLat([36.817223, -1.286389])
-    .addTo(map);
-
   //adds direction plugin
   map.addControl(
     new MapboxDirections({
@@ -32,6 +28,12 @@ function setUpMap(center) {
     }),
     'top-left'
   );
+
+  const marker = new mapboxgl.Marker({
+    color: "#00aa6c",
+    draggable: true
+    }).setLngLat([36.817223, -1.286389])
+    .addTo(map);
 
   //adds zoom and rotate controls
   const navControls = map.addControl(new mapboxgl.NavigationControl());
