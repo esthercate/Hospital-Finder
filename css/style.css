@@ -23,7 +23,11 @@ body {
 
 .hero {
   min-height: 55vh;
-  background: #282e40;
+  background: url("../images/bg1.jpg"),linear-gradient(rgba(40, 46, 64, 0.8),rgba(40, 46, 64, 0.8));
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: center;
+
 }
 
 .hero {
@@ -50,6 +54,33 @@ input[type="search"]::placeholder {
 h5 {
   color: var(--primary-green);
   font-weight: bold;
+}
+
+.card {
+  border: none;
+}
+.card img {
+  border-radius: 8px;
+}
+
+.checked {
+  color: var(--primary-green);
+}
+
+h4,
+.hname,
+.description {
+  color: var(--Dark);
+}
+
+.description {
+  opacity: .8;
+}
+
+.location {
+  font-size: 13px;
+  color: var(--Dark);
+  opacity: .8;
 }
 
 .footer {
