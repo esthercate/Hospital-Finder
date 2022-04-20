@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospital Finder - KE</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <!--Navigation Bar-->
+  <section class="navigation container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-none mt-2 mb-2">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24"
+            class="d-inline-block align-text-top">
+          Hospital Finder
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+
+            <li class="nav-item dropdown fw-bold">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Location Name
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Nairobi</a></li>
+                <li><a class="dropdown-item" href="#">Mombasa</a></li>
+                <li><a class="dropdown-item" href="#">Kisumu</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown fw-bold">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Hospital Name
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Aga Khan</a></li>
+                <li><a class="dropdown-item" href="#">Equity Afia</a></li>
+                <li><a class="dropdown-item" href="#">Mp Shah</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown fw-bold">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Specialty
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Cardiologist</a></li>
+                <li><a class="dropdown-item" href="#">Radiologists</a></li>
+                <li><a class="dropdown-item" href="#">Dentistry</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+  <!--End-->
+
+  <!--Hero Section-->
+  <section class="hero container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-8 left-col">
+          <div class="title text-light align-center fw-bold">
+            <h2>Find the best hospital near you...</h2>
+          </div>
+          <div class="search-form">
+            <form action="">
+              <input type="search" class="searchbtn p-3 mt-4 w-75" name="searchbtn" id="search-btn"
+                placeholder="Enter your Location or City">
+            </form>
+          </div>
+        </div>
+        <div class="col-4 right-col text-light">
+          image
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--End-->
+
+  <!--Map Section-->
+  <section class="map-section">
+
+  </section>
+  <!--End-->
+
+  <!--Search Process-->
+  <section class="search-process text-center mt-3">
+    <div class="container">
+      <div class="row">
+        <div class="col p-3">
+          <div class="icon mb-3">
+            <i class="fa fa-h-square" style="font-size:45px;color:#00aa6c"></i>
+          </div>
+          <div class="search-title">
+            <h5>Find nearest hospital</h5>
+          </div>
+          <div class="description">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut, quam!</p>
+          </div>
+        </div>
+        <div class="col p-3">
+          <div class="icon mb-3">
+            <i class="fa fa-map-marker" style="font-size:45px;color:#00aa6c"></i>
+          </div>
+          <div class="search-title">
+            <h5>Get directions</h5>
+          </div>
+          <div class="description">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi, nisi.</p>
+          </div>
+        </div>
+        <div class="col p-3">
+          <div class="icon mb-3">
+            <i class="fa fa-star" style="font-size:45px;color:#00aa6c"></i>
+          </div>
+          <div class="search-title">
+            <h5>Review services</h5>
+          </div>
+          <div class="description">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, officiis?</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--End-->
+
+  <!--Top Rated Hospitals-->
+  <section class="top-rated mt-3">
+    <div class="container-fluid">
+      <h5 class="heading mb-4 text-center">Top Rated Hospitals Near Me</h5>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <img src="" alt="">
+              img
+            </div>
+            <div class="card-footer">
+              <div class="hname">
+                Aga Khan
+              </div>
+              <div class="review">
+                ***** 100 reviews
+              </div>
+              <div class="location">
+                Embakasi, Fedha
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <img src="" alt="">
+              img
+            </div>
+            <div class="card-footer">
+              <div class="hname">
+                Aga Khan
+              </div>
+              <div class="review">
+                ***** 100 reviews
+              </div>
+              <div class="location">
+                Embakasi, Fedha
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <img src="" alt="">
+              img
+            </div>
+            <div class="card-footer">
+              <div class="hname">
+                Aga Khan
+              </div>
+              <div class="review">
+                ***** 100 reviews
+              </div>
+              <div class="location">
+                Embakasi, Fedha
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <img src="" alt="">
+              img
+            </div>
+            <div class="card-footer">
+              <div class="hname">
+                Aga Khan
+              </div>
+              <div class="review">
+                ***** 100 reviews
+              </div>
+              <div class="location">
+                Embakasi, Fedha
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--End-->
+
+  <!--Footer-->
+  <section class="footer p-3 mt-5 text-light text-center">
+    <div class="container">
+      <p>2022 © HospitalFinder. All rights reserved.</p>
+    </div>
+  </section>
+  <!--End-->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
