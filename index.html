@@ -11,15 +11,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
+  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
   <!--Navigation Bar-->
-  <section class="navigation container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-none mt-2 mb-2">
+  <section class="navigation container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light text-light bg-none">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand fw-bold" href="#">
           <img src="./images/Logo.jpg" alt="" width="30" height="30" class="d-inline-block align-text-top">
           Hospital Finder
         </a>
@@ -91,16 +93,7 @@
       </div>
     </div>
   </section>
-  <!--End-->
-
-  <!--Map Section-->
-  <section class="map-section mt-4">
-    <div class="container-fluid">
-      <div id='map'></div>
-
-    </div>
-  </section>
-  <!--End-->
+  <!--End--> 
 
   <!--Search Process-->
   <section class="search-process text-center mt-3">
@@ -144,8 +137,17 @@
   </section>
   <!--End-->
 
+   <!--Map Section-->
+   <section class="map-section mt-4">
+    <div class="container-fluid">
+      <div id='map'></div>
+
+    </div>
+  </section>
+  <!--End-->
+
   <!--Top Rated Hospitals-->
-  <section class="top-rated mt-3">
+  <section class="top-rated mt-4">
     <div class="container-fluid">
       <h4 class="heading mb-4 fw-bold text-center">Top Rated Hospitals Near Me</h4>
       <div class="row">
@@ -262,8 +264,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
   </script>
-  <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
-  <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
+  
   <script src="./js/index.js"></script>
 </body>
 
