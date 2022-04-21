@@ -22,7 +22,7 @@ body {
 }
 
 .hero {
-  min-height: 90vh;
+  min-height: 60vh;
   background: url("../images/bg1.jpg"), linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   background-blend-mode: overlay;
   background-size: cover;
