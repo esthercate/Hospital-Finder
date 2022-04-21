@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   let myForm = document.querySelector("form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      document.querySelector('#map').scrollIntoView({ 
-        behavior: 'smooth' 
-        
-      });
-      form.reset();
+    e.preventDefault();
+    document.querySelector('#map').scrollIntoView({
+      behavior: 'smooth'
+
+    });
+    form.reset();
   })
 });
 
@@ -41,13 +41,11 @@ function setUpMap(center) {
   );
 
   const marker = new mapboxgl.Marker({
-    color: "#ff0000",
-    draggable: true
+      color: "#ff0000",
+      draggable: true
     }).setLngLat([36.9011852, -1.318583])
     .addTo(map);
 
   //adds zoom and rotate controls
   const navControls = map.addControl(new mapboxgl.NavigationControl());
 }
-
-
