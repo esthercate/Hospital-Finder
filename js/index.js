@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  let form = document.querySelector("form").addEventListener("submit", (e) => {
+  let myForm = document.querySelector("form").addEventListener("submit", (e) => {
       e.preventDefault();
       document.querySelector('#map').scrollIntoView({ 
         behavior: 'smooth' 
+        
       });
-      
+      form.reset();
   })
 });
 
@@ -26,7 +27,7 @@ function errorLocation() {
 function setUpMap(center) {
   const map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
+    style: 'mapbox://styles/esthercatev/cl29khs4v000514ms5eiyerq3',
     center: center,
     zoom: 15
   })
@@ -40,9 +41,9 @@ function setUpMap(center) {
   );
 
   const marker = new mapboxgl.Marker({
-    color: "#00aa6c",
+    color: "#ff0000",
     draggable: true
-    }).setLngLat([36.817223, -1.286389])
+    }).setLngLat([36.9011852, -1.318583])
     .addTo(map);
 
   //adds zoom and rotate controls
