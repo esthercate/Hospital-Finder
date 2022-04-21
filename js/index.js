@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", () => {
+  let form = document.querySelector("form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      document.querySelector('#map').scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+      
+  })
+});
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiZXN0aGVyY2F0ZXYiLCJhIjoiY2wyN2w3M256MDBqYjN0bW1uOG16ZzVqdiJ9.apozKCwK2RIwWPweckfjSg';
 
 navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
@@ -38,3 +48,5 @@ function setUpMap(center) {
   //adds zoom and rotate controls
   const navControls = map.addControl(new mapboxgl.NavigationControl());
 }
+
+
