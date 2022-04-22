@@ -61,6 +61,7 @@ input[type="text"]::placeholder {
   font-size: .9rem;
 }
 
+h4,
 h5 {
   color: var(--primary-green);
   font-weight: bold;
@@ -78,7 +79,6 @@ h5 {
   color: var(--primary-green);
 }
 
-h4,
 .hname,
 .description {
   color: var(--Dark);
