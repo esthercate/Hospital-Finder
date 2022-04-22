@@ -96,6 +96,7 @@ h5 {
 
 .footer {
   background-color: var(--Dark);
+  font-weight: bolder;
 }
 
 .logoName {
