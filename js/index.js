@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     document.querySelector('#map').scrollIntoView({
       behavior: 'smooth'
-
     });
     form.reset();
   })
