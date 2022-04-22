@@ -97,3 +97,7 @@ h5 {
 .footer {
   background-color: var(--Dark);
 }
+
+.logoName {
+  color: var(--primary-green);
+}
