@@ -58,23 +58,26 @@ const features = [
 
 const Feature = () => {
 	return (
-		<Container className="py-5 md:py-12">
-			<Title
-				title="Features"
-				description="This platform combines cutting-edge technology with essential medical information to help you find the right care when you need it most."
-			/>
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-				{features.map((feature, idx) => (
-					<Card
-						key={idx}
-						icon={feature.icon}
-						iconBg={feature.iconBg}
-						title={feature.title}
-						description={feature.description}
-					/>
-				))}
-			</div>
-		</Container>
+		<section id="features">
+			<Container className="py-5">
+				<Title
+					title="Features"
+					description="This platform combines cutting-edge technology with essential medical information to help you find the right care when you need it most."
+				/>
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+					{features.map((feature, idx) => (
+						<Card
+							key={idx}
+							icon={feature.icon}
+							iconBg={feature.iconBg}
+							title={feature.title}
+							description={feature.description}
+							className="items-center text-center"
+						/>
+					))}
+				</div>
+			</Container>
+		</section>
 	);
 };
 

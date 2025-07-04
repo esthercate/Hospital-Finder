@@ -42,12 +42,12 @@ const Navbar = () => {
 						>
 							Features
 						</Link>
-						<Link
+						{/* <Link
 							href="#contact"
 							className="hover:text-green-600 font-semibold transition-colors"
 						>
 							Contact
-						</Link>
+						</Link> */}
 						<button className="flex items-center gap-2 bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg transition-colors ml-4">
 							<FiPhone className="text-lg" />
 							<span>Emergency: 999</span>

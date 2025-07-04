@@ -22,16 +22,16 @@ const Hero = () => {
 					<form className="w-full max-w-md text-left">
 						<div className="flex items-center justify-between border-2 border-white bg-white rounded-lg shadow px-1 py-1">
 							<div className="flex items-center">
-								<FiSearch className="text-green text-2xl mr-2" />
+								<FiSearch className="text-green text-xl mx-2" />
 								<input
 									type="search"
-									className="bg-transparent outline-none border-none text-gray-600 placeholder-green-600"
+									className="bg-transparent outline-none border-none text-gray-600 placeholder-green"
 									placeholder="Enter your location"
 								/>
 							</div>
 							<button
 								type="submit"
-								className="ml-2 bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
+								className="ml-2 bg-green hover:bg-green-800 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
 							>
 								Find Hospitals
 							</button>
