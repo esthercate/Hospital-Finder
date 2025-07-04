@@ -51,7 +51,7 @@ const colorMap = {
 
 const Contact = () => {
 	return (
-		<Container className="py-5 md:py-12">
+		<Container className="py-5 md:py-10">
 			<Title
 				title="Emergency Contact"
 				description="This platform combines cutting-edge technology with essential medical information to help you find the right care when you need it most."
