@@ -1,138 +1,108 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
+import React, { useEffect, useState } from 'react';
+import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import Container from './common/Container';
 import Title from './common/Title';
 import { HospitalCard, Hospital } from './HospitalCard';
-import 'mapbox-gl/dist/mapbox-gl.css';
 
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
+const containerStyle = {
+	width: '100%',
+	height: '600px',
+};
 
 const Maps = () => {
-	const mapContainerRef = useRef<HTMLDivElement | null>(null);
-	const [map, setMap] = useState<mapboxgl.Map | null>(null);
 	const [userLocation, setUserLocation] = useState<{
 		lat: number;
 		lng: number;
 	} | null>(null);
 	const [hospitals, setHospitals] = useState<Hospital[]>([]);
 
-	// Step 1: Get user location
-	useEffect(() => {
-		if (!navigator.geolocation) {
-			console.error('❌ Geolocation not supported.');
-			return;
-		}
+	const { isLoaded, loadError } = useJsApiLoader({
+		googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
+	});
 
-		console.log('📍 Requesting user location...');
+	useEffect(() => {
+		if (!navigator.geolocation) return;
+
 		navigator.geolocation.getCurrentPosition(
-			(position) => {
+			(pos) => {
 				const coords = {
-					lat: position.coords.latitude,
-					lng: position.coords.longitude,
+					lat: pos.coords.latitude,
+					lng: pos.coords.longitude,
 				};
-				console.log('User location received:', coords);
 				setUserLocation(coords);
 			},
 			(err) => {
-				console.error('Geolocation error:', {
-					code: err.code,
-					message: err.message,
-				});
-				alert('Please allow location access to use the hospital finder.');
-			},
-			{ enableHighAccuracy: true, timeout: 10000 }
+				alert('Please allow location access to use this feature.');
+				console.error('❌ Geolocation error:', err);
+			}
 		);
 	}, []);
 
-	// Step 2: Initialize map when location is ready
 	useEffect(() => {
-		if (!userLocation || map) return;
+		if (!userLocation) return;
 
-		console.log('Initializing map at:', userLocation);
-		const mapInstance = new mapboxgl.Map({
-			container: mapContainerRef.current!,
-			style: 'mapbox://styles/mapbox/streets-v11',
-			center: [userLocation.lng, userLocation.lat],
-			zoom: 13,
-		});
+		const fetchHospitals = async () => {
+			const res = await fetch(
+				`/api/places?lat=${userLocation.lat}&lng=${userLocation.lng}`
+			);
+			const data = await res.json();
 
-		// Add blue user marker
-		new mapboxgl.Marker({ color: 'blue' })
-			.setLngLat([userLocation.lng, userLocation.lat])
-			.setPopup(new mapboxgl.Popup().setText('You are here'))
-			.addTo(mapInstance);
-
-		setMap(mapInstance);
-
-		// Fetch hospitals nearby
-		fetchNearbyHospitals(userLocation, mapInstance);
-	}, [userLocation]);
-
-	// Step 3: Fetch hospitals and add red markers
-	const fetchNearbyHospitals = async (
-		location: { lat: number; lng: number },
-		mapInstance: mapboxgl.Map
-	) => {
-		const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/hospital.json?proximity=${location.lng},${location.lat}&types=poi&limit=10&access_token=${mapboxgl.accessToken}`;
-		console.log('Fetching hospitals from:', url);
-
-		try {
-			const response = await fetch(url);
-			const data = await response.json();
-
-			console.log('🏥 Hospital data received:', data.features);
-
-			const results: Hospital[] = data.features.map((place: any) => ({
-				name: place.text,
-				type: 'Hospital',
-				location: place.place_name,
-				distance: '',
-				phone: '',
-				rating: 0,
-				open: true,
-				hours: 'Unknown',
+			console.log('📦 Raw hospital data:', data.results || data.hospitals); // Debug
+			const hospitalsWithCoords = (data.results || []).map((place: any) => ({
+				name: place.name,
+				lat: place.geometry?.location?.lat,
+				lng: place.geometry?.location?.lng,
+				vicinity: place.vicinity,
+				rating: place.rating,
+				open: place.opening_hours?.open_now,
 			}));
 
-			// Add red markers
-			data.features.forEach((place: any) => {
-				new mapboxgl.Marker({ color: 'red' })
-					.setLngLat(place.geometry.coordinates)
-					.setPopup(new mapboxgl.Popup().setText(place.text))
-					.addTo(mapInstance);
-			});
+			console.log('✅ Transformed hospitals:', hospitalsWithCoords);
+			setHospitals(hospitalsWithCoords);
+		};
 
-			setHospitals(results);
-		} catch (error) {
-			console.error('Failed to fetch hospitals:', error);
-		}
-	};
+		fetchHospitals();
+	}, [userLocation]);
 
-	// UI
+	if (loadError) return <p>Error loading maps</p>;
+	if (!isLoaded || !userLocation) return <p>Loading map...</p>;
+
 	return (
 		<section id="find-hospital">
 			<Container className="py-5 md:py-10">
 				<Title
-					title="Interactive Hospital Map"
-					description="Locate nearby hospitals with our interactive map powered by Mapbox. Get real-time directions and essential information."
+					title="Nearby Hospitals"
+					description="Find hospitals near your current location."
 				/>
-				<div className="w-full flex gap-5 my-8">
-					<div className="w-3/4 border border-green rounded-2xl">
-						<div
-							ref={mapContainerRef}
-							className="w-full h-[600px] rounded-2xl"
-						/>
-					</div>
-					<div className="w-1/4 flex flex-col gap-1">
-						<h5 className="mb-2 font-semibold text-lg">Nearby Hospitals</h5>
-						<div className="flex flex-col gap-1 max-h-[600px] overflow-y-auto pr-1">
-							{hospitals.map((hospital, idx) => (
-								<HospitalCard
-									key={idx}
-									hospital={hospital}
+				<div className="flex gap-5 my-8">
+					<div className="w-3/4">
+						<GoogleMap
+							mapContainerStyle={containerStyle}
+							center={userLocation}
+							zoom={13}
+						>
+							<Marker
+								position={userLocation}
+								label="You"
+							/>
+							{hospitals.map((hospital, i) => (
+								<Marker
+									key={i}
+									position={{ lat: hospital.lat, lng: hospital.lng }}
+									label={hospital.name}
 								/>
 							))}
-						</div>
+						</GoogleMap>
+					</div>
+					<div className="w-1/4 flex flex-col gap-2 max-h-[600px] overflow-y-auto">
+						{hospitals.length === 0 && <p>No hospitals found nearby.</p>}
+						{hospitals.map((hospital, i) => (
+							<HospitalCard
+								key={i}
+								hospital={hospital}
+							/>
+						))}
 					</div>
 				</div>
 			</Container>
