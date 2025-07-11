@@ -1,91 +1,108 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
+import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 import Container from './common/Container';
 import Title from './common/Title';
 import { HospitalCard, Hospital } from './HospitalCard';
 
+const containerStyle = {
+	width: '100%',
+	height: '600px',
+};
+
 const Maps = () => {
-	const hospitalData: Hospital[] = [
-		{
-			name: 'City General Hospital',
-			type: 'General Hospital',
-			location: '123 Main St, Springfield',
-			distance: '1.2 miles',
-			phone: '(555) 123-4567',
-			rating: 4.5,
-			open: true,
-			hours: 'Open 24 hours',
-		},
-		{
-			name: 'Springfield Medical Center',
-			type: 'Medical Center',
-			location: '456 Elm St, Springfield',
-			distance: '2.0 miles',
-			phone: '(555) 987-6543',
-			rating: 4.2,
-			open: false,
-			hours: 'Mon-Fri: 8am - 8pm',
-		},
-		{
-			name: 'Urgent Care Plus',
-			type: 'Urgent Care',
-			location: '789 Oak St, Springfield',
-			distance: '2.5 miles',
-			phone: '(555) 555-1212',
-			rating: 4.7,
-			open: true,
-			hours: 'Mon-Sun: 7am - 10pm',
-		},
-		{
-			name: 'City General Hospital',
-			type: 'General Hospital',
-			location: '123 Main St, Springfield',
-			distance: '1.2 miles',
-			phone: '(555) 123-4567',
-			rating: 4.5,
-			open: true,
-			hours: 'Open 24 hours',
-		},
-		{
-			name: 'Springfield Medical Center',
-			type: 'Medical Center',
-			location: '456 Elm St, Springfield',
-			distance: '2.0 miles',
-			phone: '(555) 987-6543',
-			rating: 4.2,
-			open: false,
-			hours: 'Mon-Fri: 8am - 8pm',
-		},
-		{
-			name: 'Urgent Care Plus',
-			type: 'Urgent Care',
-			location: '789 Oak St, Springfield',
-			distance: '2.5 miles',
-			phone: '(555) 555-1212',
-			rating: 4.7,
-			open: true,
-			hours: 'Mon-Sun: 7am - 10pm',
-		},
-	];
+	const [userLocation, setUserLocation] = useState<{
+		lat: number;
+		lng: number;
+	} | null>(null);
+	const [hospitals, setHospitals] = useState<Hospital[]>([]);
+
+	const { isLoaded, loadError } = useJsApiLoader({
+		googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
+	});
+
+	useEffect(() => {
+		if (!navigator.geolocation) return;
+
+		navigator.geolocation.getCurrentPosition(
+			(pos) => {
+				const coords = {
+					lat: pos.coords.latitude,
+					lng: pos.coords.longitude,
+				};
+				setUserLocation(coords);
+			},
+			(err) => {
+				alert('Please allow location access to use this feature.');
+				console.error('❌ Geolocation error:', err);
+			}
+		);
+	}, []);
+
+	useEffect(() => {
+		if (!userLocation) return;
+
+		const fetchHospitals = async () => {
+			const res = await fetch(
+				`/api/places?lat=${userLocation.lat}&lng=${userLocation.lng}`
+			);
+			const data = await res.json();
+
+			console.log('📦 Raw hospital data:', data.results || data.hospitals); // Debug
+			const hospitalsWithCoords = (data.results || []).map((place: any) => ({
+				name: place.name,
+				lat: place.geometry?.location?.lat,
+				lng: place.geometry?.location?.lng,
+				vicinity: place.vicinity,
+				rating: place.rating,
+				open: place.opening_hours?.open_now,
+			}));
+
+			console.log('✅ Transformed hospitals:', hospitalsWithCoords);
+			setHospitals(hospitalsWithCoords);
+		};
+
+		fetchHospitals();
+	}, [userLocation]);
+
+	if (loadError) return <p>Error loading maps</p>;
+	if (!isLoaded || !userLocation) return <p>Loading map...</p>;
 
 	return (
 		<section id="find-hospital">
 			<Container className="py-5 md:py-10">
 				<Title
-					title="Interactive Hospital Map"
-					description="Locate nearby hospitals with our interactive map powered by Google Maps API. Get real-time directions and essential information."
+					title="Nearby Hospitals"
+					description="Find hospitals near your current location."
 				/>
-				<div className="w-full flex gap-5 my-8">
-					<div className="w-3/4 border border-green rounded-2xl"></div>
-					<div className="w-1/4 flex flex-col gap-1">
-						<h5 className="mb-2">Nearby Hospitals</h5>
-						<div className="flex flex-col gap-1 max-h-[600px] overflow-y-auto pr-1">
-							{hospitalData.map((hospital, idx) => (
-								<HospitalCard
-									key={idx}
-									hospital={hospital}
+				<div className="flex gap-5 my-8">
+					<div className="w-3/4">
+						<GoogleMap
+							mapContainerStyle={containerStyle}
+							center={userLocation}
+							zoom={13}
+						>
+							<Marker
+								position={userLocation}
+								label="You"
+							/>
+							{hospitals.map((hospital, i) => (
+								<Marker
+									key={i}
+									position={{ lat: hospital.lat, lng: hospital.lng }}
+									label={hospital.name}
 								/>
 							))}
-						</div>
+						</GoogleMap>
+					</div>
+					<div className="w-1/4 flex flex-col gap-2 max-h-[600px] overflow-y-auto">
+						{hospitals.length === 0 && <p>No hospitals found nearby.</p>}
+						{hospitals.map((hospital, i) => (
+							<HospitalCard
+								key={i}
+								hospital={hospital}
+							/>
+						))}
 					</div>
 				</div>
 			</Container>
