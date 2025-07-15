@@ -55,8 +55,8 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation }) => {
 					title="Nearby Hospitals"
 					description="Find hospitals near your current location."
 				/>
-				<div className="flex gap-5 my-8">
-					<div className="w-3/4">
+				<div className="flex flex-col md:flex-row gap-5 my-8">
+					<div className="w-full md:w-3/4">
 						<GoogleMap
 							mapContainerStyle={containerStyle}
 							center={location}
@@ -112,13 +112,17 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation }) => {
 					</div>
 
 					{/* Hospital list */}
-					<div className="w-1/4 flex flex-col gap-2 max-h-[600px] overflow-y-auto">
+					<div className="w-full md:w-1/4 mt-4 md:mt-0 flex md:flex-col flex-row gap-2 max-h-[600px] md:overflow-y-auto overflow-x-auto">
 						{hospitals.length === 0 && <p>No hospitals found nearby.</p>}
 						{hospitals.map((hospital, i) => (
 							<div
 								key={i}
 								onClick={() => setSelectedHospital(i)}
-								style={{ cursor: 'pointer' }}
+								style={{
+									cursor: 'pointer',
+									minWidth: '250px',
+									flex: '0 0 auto',
+								}}
 							>
 								<HospitalCard
 									hospital={hospital}

@@ -23,7 +23,7 @@ export function HospitalCard({
 }) {
 	return (
 		<div
-			className={`bg-white rounded-2xl shadow p-5 border flex flex-col items-start max-w-sm w-full mb-2 transition-all duration-200 hover:shadow-lg ${
+			className={`bg-white rounded-2xl shadow p-5 border flex flex-col items-start w-64 max-w-xs sm:max-w-sm mb-2 transition-all duration-200 hover:shadow-lg ${
 				selected ? 'border-blue-500 shadow-blue-200' : 'border-gray-100'
 			}`}
 		>
