@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
 		return NextResponse.json({ error: 'Missing coordinates' }, { status: 400 });
 	}
 
-	const apiKey = process.env.GOOGLE_PLACES_API_KEY;
+	const apiKey = process.env.NEXT_PUBLIC_GOOGLE_PLACES_API_KEY;
 	const radius = 5000; // meters
 
 	const url = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${lat},${lng}&radius=${radius}&type=hospital&key=${apiKey}`;
