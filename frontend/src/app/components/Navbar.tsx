@@ -1,15 +1,24 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import Container from './common/Container';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiPhone } from 'react-icons/fi';
 
 const Navbar = () => {
+	const [emergency, setEmergency] = useState('');
+
+	useEffect(() => {
+		const stored = localStorage.getItem('emergencyNumber');
+		if (stored) {
+			setEmergency(stored);
+		}
+	}, []);
+
 	return (
 		<nav className="w-full bg-white shadow-sm">
 			<Container>
 				<div className="flex items-center justify-between py-4 px-auto md:px-10">
-					{/* Logo and Site Name */}
 					<div className="flex items-center space-x-3">
 						<Image
 							src="/Logo.jpg"
@@ -22,7 +31,6 @@ const Navbar = () => {
 							Hospital Finder
 						</span>
 					</div>
-					{/* Nav Links */}
 					<div className="flex items-center space-x-8">
 						<Link
 							href="/"
@@ -42,15 +50,15 @@ const Navbar = () => {
 						>
 							Features
 						</Link>
-						{/* <Link
+						<Link
 							href="#contact"
 							className="hover:text-green-600 font-semibold transition-colors"
 						>
 							Contact
-						</Link> */}
-						<button className="flex items-center gap-2 bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded-lg transition-colors ml-4">
+						</Link>
+						<button className="flex items-center gap-2 border border-green text-green hover:text-white hover:bg-green font-bold py-2 px-4 rounded-lg transition-colors ml-4">
 							<FiPhone className="text-lg" />
-							<span>Emergency: 999</span>
+							<span>Emergency: {emergency}</span>
 						</button>
 					</div>
 				</div>
