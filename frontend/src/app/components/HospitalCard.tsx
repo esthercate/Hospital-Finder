@@ -27,7 +27,7 @@ export function HospitalCard({ hospital }: { hospital: Hospital }) {
 					</div>
 				)}
 
-				{hospital.open !== undefined && (
+				{hospital.open !== undefined ? (
 					<div className="text-xs text-gray-500 flex items-center gap-1">
 						<span
 							className={
@@ -39,21 +39,30 @@ export function HospitalCard({ hospital }: { hospital: Hospital }) {
 							{hospital.open ? 'Open Now' : 'Closed'}
 						</span>
 					</div>
+				) : (
+					<div className="text-xs text-gray-500 flex items-center gap-1">
+						<span className="text-red-500 font-semibold">N/A</span>
+					</div>
 				)}
 			</div>
 
 			<div className="mt-3 flex justify-between items-center w-full">
 				<div className="flex gap-1 items-center">
-					{hospital.rating &&
-						Array.from({ length: Math.floor(hospital.rating) }).map((_, i) => (
-							<FaRegStar
-								key={i}
-								className="text-green"
-								size={18}
-							/>
-						))}
-					{hospital.rating && (
-						<span className="text-xs ml-1">{hospital.rating}</span>
+					{hospital.rating ? (
+						<>
+							{Array.from({ length: Math.floor(hospital.rating) }).map(
+								(_, i) => (
+									<FaRegStar
+										key={i}
+										className="text-green"
+										size={18}
+									/>
+								)
+							)}
+							<span className="text-xs ml-1">{hospital.rating}</span>
+						</>
+					) : (
+						<span className="text-xs text-gray-400">No rating</span>
 					)}
 				</div>
 
