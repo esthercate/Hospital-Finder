@@ -60,20 +60,20 @@ const Hero: React.FC<HeroProps> = ({ onLocationSelect }) => {
 						onSubmit={handleSearch}
 						className="w-full max-w-md text-left"
 					>
-						<div className="flex items-center justify-between border-2 border-white bg-white rounded-lg shadow px-1 py-1">
-							<div className="flex items-center">
+						<div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between border-2 border-white bg-white rounded-lg shadow px-1 py-1 gap-2 sm:gap-0">
+							<div className="flex flex-row flex-1 items-center">
 								<FiSearch className="text-green text-xl mx-2" />
 								<input
 									type="search"
 									value={query}
 									onChange={(e) => setQuery(e.target.value)}
-									className="bg-transparent outline-none border-none text-gray-600 placeholder-green"
+									className="bg-transparent outline-none border-none text-gray-600 placeholder-green w-full py-2 px-1"
 									placeholder="Enter your location"
 								/>
 							</div>
 							<button
 								type="submit"
-								className="ml-2 bg-green hover:bg-green-800 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
+								className="w-full sm:w-auto ml-0 sm:ml-2 bg-green hover:bg-green-800 text-white font-semibold px-4 py-2 rounded-lg transition-colors"
 							>
 								Find Hospitals
 							</button>
