@@ -67,9 +67,10 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation }) => {
 							{/* Green marker for user's location */}
 							<Marker
 								position={location}
-								label="You"
+								label="Me"
 								icon={{
 									url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+									scaledSize: new window.google.maps.Size(40, 40),
 								}}
 								zIndex={999}
 							/>
@@ -85,7 +86,10 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation }) => {
 											? {
 													url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
 											  }
-											: undefined
+											: {
+													url: '/icons/pin.svg',
+													scaledSize: new window.google.maps.Size(25, 25),
+											  }
 									}
 								/>
 							))}
