@@ -14,9 +14,19 @@ export interface Hospital {
 	open?: boolean; // add this
 }
 
-export function HospitalCard({ hospital }: { hospital: Hospital }) {
+export function HospitalCard({
+	hospital,
+	selected,
+}: {
+	hospital: Hospital;
+	selected?: boolean;
+}) {
 	return (
-		<div className="bg-white rounded-2xl shadow p-5 border border-gray-100 flex flex-col items-start max-w-sm w-full mb-2 transition-all duration-200 hover:shadow-lg">
+		<div
+			className={`bg-white rounded-2xl shadow p-5 border flex flex-col items-start max-w-sm w-full mb-2 transition-all duration-200 hover:shadow-lg ${
+				selected ? 'border-blue-500 shadow-blue-200' : 'border-gray-100'
+			}`}
+		>
 			<div className="flex flex-col gap-2 w-full">
 				<h6 className="font-semibold">{hospital.name}</h6>
 
