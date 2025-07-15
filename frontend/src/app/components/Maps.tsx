@@ -32,7 +32,7 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation }) => {
 
 	const [selectedHospital, setSelectedHospital] = useState<number | null>(null);
 	const mapRef = useRef<google.maps.Map | null>(null);
-	const [zoom, setZoom] = useState(13);
+	const [zoom, setZoom] = useState(15); // Zooms in closer by default
 
 	const onMapLoad = useCallback((map: google.maps.Map) => {
 		mapRef.current = map;
@@ -55,8 +55,8 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation }) => {
 					title="Nearby Hospitals"
 					description="Find hospitals near your current location."
 				/>
-				<div className="flex gap-5 my-8">
-					<div className="w-3/4">
+				<div className="flex flex-col md:flex-row gap-5 my-8">
+					<div className="w-full md:w-3/4">
 						<GoogleMap
 							mapContainerStyle={containerStyle}
 							center={location}
@@ -67,9 +67,10 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation }) => {
 							{/* Green marker for user's location */}
 							<Marker
 								position={location}
-								label="You"
+								label="Me"
 								icon={{
 									url: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+									scaledSize: new window.google.maps.Size(40, 40),
 								}}
 								zIndex={999}
 							/>
@@ -80,6 +81,16 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation }) => {
 									key={i}
 									position={{ lat: hospital.lat, lng: hospital.lng }}
 									onClick={() => setSelectedHospital(i)}
+									icon={
+										selectedHospital === i
+											? {
+													url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+											  }
+											: {
+													url: '/icons/pin.svg',
+													scaledSize: new window.google.maps.Size(25, 25),
+											  }
+									}
 								/>
 							))}
 
@@ -101,13 +112,23 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation }) => {
 					</div>
 
 					{/* Hospital list */}
-					<div className="w-1/4 flex flex-col gap-2 max-h-[600px] overflow-y-auto">
+					<div className="w-full md:w-1/4 mt-4 md:mt-0 flex md:flex-col flex-row gap-2 max-h-[600px] md:overflow-y-auto overflow-x-auto">
 						{hospitals.length === 0 && <p>No hospitals found nearby.</p>}
 						{hospitals.map((hospital, i) => (
-							<HospitalCard
+							<div
 								key={i}
-								hospital={hospital}
-							/>
+								onClick={() => setSelectedHospital(i)}
+								style={{
+									cursor: 'pointer',
+									minWidth: '250px',
+									flex: '0 0 auto',
+								}}
+							>
+								<HospitalCard
+									hospital={hospital}
+									selected={selectedHospital === i}
+								/>
+							</div>
 						))}
 					</div>
 				</div>

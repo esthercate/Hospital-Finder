@@ -21,7 +21,7 @@ export const useUserLocation = (
 			},
 			(err) => {
 				alert('Please allow location access to use this feature.');
-				console.error('❌ Geolocation error:', err);
+				console.error('Geolocation error:', err);
 			}
 		);
 	}, [overrideLocation]);
