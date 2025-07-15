@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { MdOutlineLocationOn, MdOutlineLocalPhone } from 'react-icons/md';
+import { MdOutlineLocationOn } from 'react-icons/md';
 import { TbLocation } from 'react-icons/tb';
 import { FaRegStar } from 'react-icons/fa6';
 
