@@ -32,7 +32,7 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation }) => {
 
 	const [selectedHospital, setSelectedHospital] = useState<number | null>(null);
 	const mapRef = useRef<google.maps.Map | null>(null);
-	const [zoom, setZoom] = useState(13);
+	const [zoom, setZoom] = useState(15); // Zooms in closer by default
 
 	const onMapLoad = useCallback((map: google.maps.Map) => {
 		mapRef.current = map;
