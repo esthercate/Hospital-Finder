@@ -17,19 +17,21 @@ Whether you're in a new city or facing a critical situation, Hospital Finder ens
 
 ## Features
 
-- 📍 Detects user’s current location
-- 🏥 Displays nearby hospitals using mapping APIs
-- 🗺️ Interactive map with hospital markers
-- 📱 Fully responsive and mobile-friendly
-- ⚡ Deployed for free on Vercel
+- Detects the user’s current location
+- Displays nearby hospitals using the Google Maps API
+- Fetches local emergency numbers by country
+- Interactive map with hospital markers
+- Fully responsive and mobile-friendly
+- Deployed on Vercel
 
 ---
 
 ## Technologies Used
 
-- **React.js** – Frontend framework
+- **Next.js** – Frontend framework
 - **Tailwind CSS** – Utility-first CSS styling
-- **Google Maps API** or **OpenStreetMap** – Location and mapping
+- **Google Maps API** – Location and mapping
+- **Emergency Number API** - Get the Dispatch Emergency Number for the user's Country
 - **Vercel** – Deployment and hosting
 
 ---
@@ -38,5 +40,9 @@ Whether you're in a new city or facing a critical situation, Hospital Finder ens
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/hospital-finder.git
-   cd hospital-finder
+   git clone https://github.com/esthercate/Hospital-Finder.git
+   cd frontend 
+
+2. Install dependencies
+   ```bash
+   npm install
