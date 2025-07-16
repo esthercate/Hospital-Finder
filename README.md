@@ -9,11 +9,11 @@ Whether you're in a new city or facing a critical situation, Hospital Finder ens
 
 ## Table of Contents
 
-- [Features](#-features)
-- [Technologies Used](#-technologies-used)
-- [Installation](#-installation)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Features
 
