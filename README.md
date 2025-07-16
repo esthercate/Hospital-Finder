@@ -7,7 +7,7 @@ Whether you're in a new city or facing a critical situation, Hospital Finder ens
 
 [Visit Hospital Finder](https://hospital-finder-eta.vercel.app/)
 
-## 📚 Table of Contents
+## Table of Contents
 
 - [Features](#-features)
 - [Technologies Used](#-technologies-used)
@@ -15,3 +15,28 @@ Whether you're in a new city or facing a critical situation, Hospital Finder ens
 - [Contributing](#-contributing)
 - [License](#-license)
 
+## Features
+
+- 📍 Detects user’s current location
+- 🏥 Displays nearby hospitals using mapping APIs
+- 🗺️ Interactive map with hospital markers
+- 📱 Fully responsive and mobile-friendly
+- ⚡ Deployed for free on Vercel
+
+---
+
+## Technologies Used
+
+- **React.js** – Frontend framework
+- **Tailwind CSS** – Utility-first CSS styling
+- **Google Maps API** or **OpenStreetMap** – Location and mapping
+- **Vercel** – Deployment and hosting
+
+---
+
+## Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/hospital-finder.git
+   cd hospital-finder
