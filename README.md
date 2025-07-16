@@ -16,10 +16,10 @@ Whether you're in a new city or facing a critical situation, Hospital Finder ens
 
 [Visit Hospital Finder](https://hospital-finder-eta.vercel.app/)
 
-### Homepage
+#### Homepage
 ![Homepage](./screenshots/homepage.png)
 
-### Map View
+#### Map View
 ![Map View](./screenshots/map-view.png)
 
 ## Features
