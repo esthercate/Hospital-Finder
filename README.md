@@ -54,12 +54,16 @@ Whether you're in a new city or facing a critical situation, Hospital Finder ens
    ```bash
    npm install
 
-3. Run the development server
+3. Create a .env.local file and add your Google Maps API key
+   ```env
+   NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+
+4. Run the development server
    ```bash
    npm run dev
 
-4. Visit
-   ```bash
+5. Visit
+   ```arduino
    http://localhost:3000
 
 ## Contributing
