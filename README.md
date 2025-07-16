@@ -55,15 +55,14 @@ Whether you're in a new city or facing a critical situation, Hospital Finder ens
    ```bash
    http://localhost:3000
 
+## Contributing
+Contributions are welcome! Here's how:
 
+1. Fork the repository
+2. Create a new branch (git checkout -b @your-name/feature/YourFeature)
+3. Commit your changes (git commit -m 'Add new feature')
+4. Push to the branch (git push origin @your-name/feature/YourFeature)
+5. Open a Pull Request
 
-
-
-
-
-
-
-
-
-
-   
+## License
+This project is licensed under the MIT License – see the LICENSE file for details.
