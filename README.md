@@ -67,7 +67,7 @@ Whether you're in a new city or facing a critical situation, Hospital Finder ens
    http://localhost:3000
 
 ## Contributing
-Contributions are welcome! Here's how:
+Contributions and bug fixes are welcome! Here's how:
 
 1. Fork the repository
 2. Create a new branch (git checkout -b @your-name/feature/YourFeature)
