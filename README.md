@@ -46,3 +46,24 @@ Whether you're in a new city or facing a critical situation, Hospital Finder ens
 2. Install dependencies
    ```bash
    npm install
+
+3. Run the development server
+   ```bash
+   npm run dev
+
+4. Visit
+   ```bash
+   http://localhost:3000
+
+
+
+
+
+
+
+
+
+
+
+
+   
