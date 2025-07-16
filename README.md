@@ -1,4 +1,4 @@
-#Hospita Finder
+# Hospita Finder
 
 Hospital Finder is a web application designed to help users quickly locate the nearest hospitals during emergencies. It uses geolocation and mapping APIs to find and display hospitals nearby in real-time.
 
