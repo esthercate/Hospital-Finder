@@ -54,7 +54,7 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation }) => {
 				</div>
 			</div>
 		);
-	if (!isLoaded || !location)
+	if (!isLoaded || !location) {
 		return (
 			<div className="flex items-center justify-center h-[300px] w-full">
 				<div className="flex flex-col items-center space-y-4">
@@ -63,6 +63,8 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation }) => {
 				</div>
 			</div>
 		);
+	}
+		
 
 	return (
 		<section id="find-hospital">
