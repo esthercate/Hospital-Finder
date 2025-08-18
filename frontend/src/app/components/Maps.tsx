@@ -45,8 +45,24 @@ const Maps: React.FC<MapsProps> = ({ overrideLocation }) => {
 		}
 	};
 
-	if (loadError) return <p>Error loading maps</p>;
-	if (!isLoaded || !location) return <p>Loading map...</p>;
+	if (loadError)
+		return (
+			<div className="flex items-center justify-center h-[300px] w-full">
+				<div className="flex flex-col items-center space-y-4">
+					<div className="h-12 w-12 animate-spin rounded-full border-4 border-green border-t-transparent" />
+					<p className="text-gray-600 font-medium">Error loading map</p>
+				</div>
+			</div>
+		);
+	if (!isLoaded || !location)
+		return (
+			<div className="flex items-center justify-center h-[300px] w-full">
+				<div className="flex flex-col items-center space-y-4">
+					<div className="h-12 w-12 animate-spin rounded-full border-4 border-green border-t-transparent" />
+					<p className="text-gray-600 font-medium">Loading map...</p>
+				</div>
+			</div>
+		);
 
 	return (
 		<section id="find-hospital">
