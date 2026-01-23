@@ -3,24 +3,15 @@
 Hospital Finder is a web application designed to help users quickly locate the nearest hospitals during emergencies. It utilizes Google Maps APIs to identify and display nearby hospitals in real-time.
 Whether you're in a new city or facing a critical situation, Hospital Finder ensures that help is just a click away.
 
-## Table of Contents
-
-- [Live Demo](#live-demo)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Contributing](#contributing)
-- [License](#license)
-
-## Live Demo
-
-[Visit Hospital Finder](https://hospital-finder-eta.vercel.app/)
-
 #### Homepage
 ![Homepage](./screenshots/homepage.png)
 
 #### Map View
 ![Map View](./screenshots/map-view.png)
+
+## Live Demo
+
+[Visit Hospital Finder](https://hospital-finder-eta.vercel.app/)
 
 ## Features
 
@@ -77,3 +68,9 @@ Contributions and bug fixes are welcome! Here's how:
 
 ## License
 This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
+
+## Connect with Me
+
+- [LinkedIn](https://www.linkedin.com/in/catherine-esther-vuthi/)
+
+- [X](https://x.com/Cate_ev)
