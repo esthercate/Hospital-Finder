@@ -26,9 +26,7 @@ export const useUserLocation = (
         setLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
       },
       (err) => {
-        alert('Could not get your location. Showing a default area instead.');
-        console.error('Geolocation error:', err);
-        setLocation(FALLBACK_LOCATION); // <-- key change
+        setLocation(FALLBACK_LOCATION);
       }
     );
   }, [overrideLocation]);
